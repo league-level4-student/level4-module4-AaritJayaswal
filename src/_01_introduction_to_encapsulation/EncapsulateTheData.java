@@ -15,20 +15,83 @@ package _01_introduction_to_encapsulation;
  * 
  * */
 
-
 public class EncapsulateTheData {
-	//1. Encapsulate the member variables.
-	//   Add restrictions to the setters according to the comment.
-	
-	//2. Create a new JUnit Test case and write tests to verify that 
-	//   the member variables' getters and setters are working
-	
-	int itemsReceived; //must not be negative. All negative arguments get set to 0.
-	float degreesTurned; //must be locked between 0.0 and 360.0 inclusive.
-	String nomenclature = " "; //must not be set to a blank string. Blank Strings get set to a space
-	Object memberObj;  //must not be a String.  If it is a String, set it equal to a new Object();
-	
+	// 1. Encapsulate the member variables.
+	// Add restrictions to the setters according to the comment.
+
+	// 2. Create a new JUnit Test case and write tests to verify that
+	// the member variables' getters and setters are working
+
+	private int itemsReceived; // must not be negative. All negative arguments get set to 0.
+	private float degreesTurned; // must be locked between 0.0 and 360.0 inclusive.
+	private String nomenclature = " "; // must not be set to a blank string. Blank Strings get set to a space
+	private Object memberObj; // must not be a String. If it is a String, set it equal to a new Object();
+
 	public static void main(String[] args) {
+
+	}
+
+	public int getItemsReceived() {
+
+		return itemsReceived;
+	}
+
+	public void setItemsReceived(int x) {
+
+		if (x < 0) {
+			x = 0;
+		}
+
+		itemsReceived = x;
+
+	}
+
+	public float getDegreesTurned() {
+
+		return degreesTurned;
+	}
+
+	public void setDegreesTurned(float x) {
+
+		if (x < 0) {
+			x = 0;
+		} else if (x > 360) {
+			x = 360;
+		}
+
+		degreesTurned = x;
+
+	}
+
+	public String getNomenclature() {
+		
+		return nomenclature;
+	}
+	
+	public void setNomenclature(String x) {
+		
+		if(x.equals("")) {
+			x = " ";
+		}
+		
+		nomenclature = x;
+	}
+	
+	public Object getMemberObj() {
+		
+		return memberObj;
+	}
+	
+	public void setMemberObj(Object xx) {
+		
+		if(xx instanceof String) {
+			
+			xx = new Object();
+			
+		}
+		
+		memberObj = xx;
 		
 	}
+
 }
