@@ -18,11 +18,13 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 	private JFrame window;
 	private Timer timer;
 
-	ArrayList<Polymorph> polymorphs = new ArrayList<Polymorph>(2);
+	ArrayList<Polymorph> polymorphs = new ArrayList<Polymorph>(5);
 
 	public static void main(String[] args) {
 		new PolymorphWindow().buildWindow();
 	}
+	FollowMorph follow = new FollowMorph(0,0,50,50);
+	ClickMorph click = new ClickMorph(400,400,50,50);
 
 	public void buildWindow() {
 		window = new JFrame("IT'S MORPHIN' TIME!");
@@ -31,12 +33,20 @@ public class PolymorphWindow extends JPanel implements ActionListener {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.pack();
 		window.setVisible(true);
+		window.addMouseMotionListener(follow);
+		window.addMouseListener(click);
 
 		polymorphs.add(new BluePolymorph(50, 50, 50, 50));
 		polymorphs.add(new RedMorph(200,100,50,50));
 		polymorphs.add(new MovingMorph(200,200,50,50));
+		polymorphs.add(new CircleMorph(250,250,50,50));
+		polymorphs.add(follow);
+		polymorphs.add(new ImageMorph(50,200,50,50));
+		polymorphs.add(click);
 		
-		timer = new Timer(1000 / 30, this);
+	
+		
+		timer = new Timer(1000 / 60, this);
 		timer.start();
 
 	}
